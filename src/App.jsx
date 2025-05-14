@@ -8,12 +8,15 @@ function App() {
     title: "",
     body: "",
     public: false
-
-
-
-
   })
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.type === "checked" ? e.target.cheked : e.target.value
+    })
+
+  }
   return (
     <>
       <div className="container">
@@ -22,38 +25,38 @@ function App() {
             <h1>REACT POST FORM</h1>
           </div>
         </div>
-        <iv className="row">
+        <div className="row">
           <div className="col-12">
             <form className='bg-light mt-3 p-4'>
               <div className="col-12">
-                <label for="author " class="form-label">Author</label>
-                <input value={formData.author} name="author" type="text" class="form-control" id="author"></input>
+                <label htmlFor="author " className="form-label">Author</label>
+                <input value={formData.author} onChange={handleChange} name="author" type="text" className="form-control" id="author"></input>
               </div>
               <div className="col-12">
-                <label for="title" class="form-label">Title</label>
-                <input value={formData.title} name="title" type="text" class="form-control" id="title"></input>
+                <label htmlFor="title" className="form-label">Title</label>
+                <input value={formData.title} onChange={handleChange} name="title" type="text" className="form-control" id="title"></input>
               </div>
               <div className="col-12">
-                <label for="body ">Body</label>
-                <textarea value={formData.body} name="body" class="form-control" placeholder="Text goes here..." id="body"></textarea>
+                <label htmlFor="body ">Body</label>
+                <textarea value={formData.body} onChange={handleChange} name="body" className="form-control" placeholder="Text goes here..." id="body"></textarea>
               </div>
               <div className="col-12">
-                <label class="form-check-label" for="checkDefault">Do you want the post to be public ?</label>
-                <div class="form-check">
-                  <input checked={formData.public} name="public" class="form-check-input" type="checkbox" value="Yes" id="public" />
-                  <label class="form-check-label" for="public"> Yes </label>
+                <label className="form-check-label" htmlFor="checkDefault">Do you want the post to be public ?</label>
+                <div className="form-check">
+                  <input checked={formData.public} onChange={handleChange} name="public" className="form-check-input" type="checkbox" value="Yes" id="public" />
+                  <label className="form-check-label" htmlFor="public"> Yes </label>
                 </div>
-                <div class="form-check">
-                  <input checked={formData.public} name="public" class="form-check-input" type="checkbox" value="No" id="public" />
-                  <label class="form-check-label" for="public"> No </label>
+                <div className="form-check">
+                  <input checked={formData.public} onChange={handleChange} name="public" className="form-check-input" type="checkbox" value="No" id="public" />
+                  <label className="form-check-label" htmlFor="public"> No </label>
                 </div>
               </div>
               <div className="col-12 mt-3">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
-        </iv>
+        </div>
       </div>
     </>
   )
